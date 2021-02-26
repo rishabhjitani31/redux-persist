@@ -89,7 +89,6 @@ const MainForm = () => {
                 </Card>
                 </div>
             );
-
         case 4:
             return (
                 <div className='custom-form'>

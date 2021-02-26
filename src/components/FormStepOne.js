@@ -57,7 +57,6 @@ const StepOne = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="SSN"
         name="ssn"
@@ -73,7 +72,6 @@ const StepOne = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Address"
         name="address"
@@ -86,7 +84,6 @@ const StepOne = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="City"
         name="city"
@@ -99,7 +96,6 @@ const StepOne = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="State"
         name="state"
@@ -115,7 +111,6 @@ const StepOne = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Zip Code"
         name="zipCode"
@@ -131,7 +126,6 @@ const StepOne = props => {
       >
         <Input />
       </Form.Item> 
-
       <Form.Item {...tailLayout}>
         <Button 
             type="primary" 

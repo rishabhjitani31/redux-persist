@@ -101,7 +101,6 @@ const FormStepthree = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Address"
         name="address"
@@ -134,7 +133,6 @@ const FormStepthree = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="State"
         name="state"
@@ -150,7 +148,6 @@ const FormStepthree = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Zip Code"
         name="zipCode"

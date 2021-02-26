@@ -84,7 +84,6 @@ const StepTwo = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="State Registered"
         name="stateRegistered"
@@ -100,7 +99,6 @@ const StepTwo = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Address"
         name="address"
@@ -113,7 +111,6 @@ const StepTwo = props => {
       >
         <Input onChange={onAddressChange} value={businessDetails.address} />
       </Form.Item>
-      
       <Checkbox 
         onChange={onCheckedChange} 
         checked={isChecked}
@@ -133,7 +130,6 @@ const StepTwo = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="State"
         name="state"
@@ -149,7 +145,6 @@ const StepTwo = props => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Zip Code"
         name="zipCode"
@@ -165,7 +160,6 @@ const StepTwo = props => {
       >
         <Input />
       </Form.Item> 
-
       <Form.Item {...tailLayout}>
         <div className='step-2-3-buttons'>
             <Button type="default" onClick={handleBackClick} >
@@ -176,7 +170,6 @@ const StepTwo = props => {
             </Button>
         </div>
       </Form.Item>
-      
     </Form>
   );
 };
