@@ -1,0 +1,14 @@
+@import "~antd/dist/antd.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.main-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-height: 1000px;
+  overflow: auto;
+}
