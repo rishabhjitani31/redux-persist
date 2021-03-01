@@ -7,7 +7,9 @@ import {
   SET_DEBIT_BUSINESS_CHECKED,
   SET_DEBIT_PERSONAL_CHECKED,
   SET_POPULATE_USERS_LIST,
-  RESET
+  RESET,
+  UPDATE_BUSINESS_ADDRESS,
+  UPDATE_DEBIT_ADDRESS
 } from "./actionTypes";
 
 const initialState = {
@@ -113,6 +115,34 @@ const addReducer = (state = initialState, action) => {
       return {
         ...state,
         form: initialState.form
+      };
+    case UPDATE_BUSINESS_ADDRESS:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          businessDetails: {
+            ...state.form.businessDetails,
+            address: action.payload.address,
+            state: action.payload.state,
+            city: action.payload.city,
+            zipCode: action.payload.zipCode
+          }
+        }
+      };
+    case UPDATE_DEBIT_ADDRESS:
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          debitDetails: {
+            ...state.form.debitDetails,
+            address: action.payload.address,
+            state: action.payload.state,
+            city: action.payload.city,
+            zipCode: action.payload.zipCode
+          }
+        }
       };
     default:
       return state;

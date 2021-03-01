@@ -2,7 +2,8 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
   saveBusinessDetails, 
-  onBusinessCheckedChange
+  onBusinessCheckedChange,
+  updateDebitAddress
 } from '../redux/actions'
 import '../pages/MainForm.css'
 
@@ -30,6 +31,7 @@ const StepTwo = props => {
   const businessDetails = businessForm?.businessDetails;
   const personalDetails = businessForm?.personalDetails;
   const isChecked =  businessForm?.businessChecked;
+  const dBusinessChecked =  businessForm?.debitBusinessChecked
 
   const dispatch = useDispatch();
 
@@ -53,7 +55,10 @@ const StepTwo = props => {
       const values = form.getFieldsValue();
       form.setFieldsValue({
         ...values,
-        address:personalDetails?.address 
+        address: personalDetails?.address,
+        city: personalDetails?.city,
+        state: personalDetails.state,
+        zipCode: personalDetails.zipCode
       })
     }
     dispatch(onBusinessCheckedChange(e?.target?.checked))
@@ -61,6 +66,16 @@ const StepTwo = props => {
 
   const onAddressChange = () => {
     dispatch(onBusinessCheckedChange(false))
+
+    if (dBusinessChecked) {
+      const values = form.getFieldsValue();
+      dispatch(updateDebitAddress({
+        address: values?.address,
+        state: values?.state,
+        city: values?.city,
+        zipCode: values?.zipCode
+      })) 
+    }
   }
 
   return (
@@ -128,7 +143,7 @@ const StepTwo = props => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={businessDetails.city} />
       </Form.Item>
       <Form.Item
         label="State"
@@ -143,7 +158,7 @@ const StepTwo = props => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={businessDetails.state} />
       </Form.Item>
       <Form.Item
         label="Zip Code"
@@ -158,7 +173,7 @@ const StepTwo = props => {
           }
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={businessDetails.zipCode} />
       </Form.Item> 
       <Form.Item {...tailLayout}>
         <div className='step-2-3-buttons'>

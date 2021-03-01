@@ -1,6 +1,10 @@
 import { Form, Input, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { savePersonalDetails } from '../redux/actions';
+import { 
+  savePersonalDetails, 
+  updateBusinessAddress,
+  updateDebitAddress
+} from '../redux/actions';
 
 
 const layout = {
@@ -25,6 +29,9 @@ const StepOne = props => {
   const personalForm = useSelector(state => state?.form);
   const personalDetails = personalForm?.personalDetails;
 
+  const isChecked =  personalForm?.businessChecked;
+  const isCheckedDebit = personalForm?.debitPersonalChecked
+
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
@@ -35,6 +42,29 @@ const StepOne = props => {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+
+  const onAddressChange = () => {
+    console.log('isChecked', isChecked)
+    if (isChecked) {
+      const values = form.getFieldsValue();
+      dispatch(updateBusinessAddress({
+        address: values?.address,
+        state: values?.state,
+        city: values?.city,
+        zipCode: values?.zipCode
+      }))
+    }
+
+    if (isCheckedDebit) {
+      const values = form.getFieldsValue();
+      dispatch(updateDebitAddress({
+        address: values?.address,
+        state: values?.state,
+        city: values?.city,
+        zipCode: values?.zipCode
+      })) 
+    }
+  }
 
   return (
     <Form
@@ -82,7 +112,7 @@ const StepOne = props => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={personalDetails.address} />
       </Form.Item>
       <Form.Item
         label="City"
@@ -94,7 +124,7 @@ const StepOne = props => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={personalDetails.city} />
       </Form.Item>
       <Form.Item
         label="State"
@@ -109,7 +139,7 @@ const StepOne = props => {
           }
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={personalDetails.state} />
       </Form.Item>
       <Form.Item
         label="Zip Code"
@@ -124,7 +154,7 @@ const StepOne = props => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={personalDetails.zipCode} />
       </Form.Item> 
       <Form.Item {...tailLayout}>
         <Button 

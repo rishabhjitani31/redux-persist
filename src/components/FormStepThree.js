@@ -31,6 +31,7 @@ const FormStepthree = props => {
   const businessDetails = debitForm?.businessDetails;
   const dPersonalChecked =  debitForm?.debitPersonalChecked;
   const dBusinessChecked =  debitForm?.debitBusinessChecked;
+  const isChecked =  debitForm?.businessChecked; 
   
 
   const dispatch = useDispatch();
@@ -56,7 +57,10 @@ const FormStepthree = props => {
       const values = form.getFieldsValue();
       form.setFieldsValue({
         ...values,
-        address:personalDetails?.address 
+        address:personalDetails?.address,
+        city: personalDetails?.city,
+        state: personalDetails.state,
+        zipCode: personalDetails.zipCode
       });
     }
     dispatch(onDebitPersonalCheckedChange(e?.target?.checked));
@@ -68,7 +72,10 @@ const FormStepthree = props => {
       const values = form.getFieldsValue();
       form.setFieldsValue({
         ...values,
-        address:businessDetails?.address 
+        address: businessDetails?.address,
+        city: businessDetails?.city,
+        state: businessDetails.state,
+        zipCode: businessDetails.zipCode 
       });
     }
     dispatch(onDebitBusinessCheckedChange(e?.target?.checked));
@@ -114,9 +121,11 @@ const FormStepthree = props => {
         <Input onChange={onAddressChange} value={debitDetails.address}  />
       </Form.Item>
       <div className='checkbox-debit-tab'>
-        <Checkbox onChange={onPersonalCheckedChange} checked={dPersonalChecked} >
-          Same as Personal
-        </Checkbox>
+        {!isChecked && 
+          <Checkbox onChange={onPersonalCheckedChange} checked={dPersonalChecked} >
+            Same as Personal
+          </Checkbox>
+        }
         <Checkbox onChange={onBusinessCheckedChange} checked={dBusinessChecked}>
           Same as Business
         </Checkbox>
@@ -131,7 +140,7 @@ const FormStepthree = props => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={debitDetails.city} />
       </Form.Item>
       <Form.Item
         label="State"
@@ -146,7 +155,7 @@ const FormStepthree = props => {
           }
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={debitDetails.state} />
       </Form.Item>
       <Form.Item
         label="Zip Code"
@@ -161,7 +170,7 @@ const FormStepthree = props => {
           }
         ]}
       >
-        <Input />
+        <Input onChange={onAddressChange} value={debitDetails.zipCode}/>
       </Form.Item> 
       <Form.Item {...tailLayout}>
         <div className='step-2-3-buttons'>

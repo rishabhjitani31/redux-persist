@@ -7,7 +7,9 @@ import {
   SET_DEBIT_BUSINESS_CHECKED,
   SET_DEBIT_PERSONAL_CHECKED,
   SET_POPULATE_USERS_LIST,
-  RESET
+  RESET,
+  UPDATE_BUSINESS_ADDRESS,
+  UPDATE_DEBIT_ADDRESS
 } from "./actionTypes";
 
 export const savePersonalDetails = form => {
@@ -72,3 +74,16 @@ export const handleReset = () => {
   };  
 }
 
+export const updateBusinessAddress = data => {
+  return {
+    type: UPDATE_BUSINESS_ADDRESS,
+    payload: data,
+  };   
+}
+
+export const updateDebitAddress = data => {
+  return {
+    type: UPDATE_DEBIT_ADDRESS,
+    payload: data,
+  };   
+}
