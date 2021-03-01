@@ -44,7 +44,6 @@ const StepOne = props => {
   };
 
   const onAddressChange = () => {
-    console.log('isChecked', isChecked)
     if (isChecked) {
       const values = form.getFieldsValue();
       dispatch(updateBusinessAddress({
